@@ -122,3 +122,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'accounts.User' # zamieniamy domyślny model usera w django na nasz customowy
+
+EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+SENDGRID_API_KEY = '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'
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+
+DEFAULT_FROM_EMAIL = 'Forum Sportowe<rafiks28@gmail.com>'
+

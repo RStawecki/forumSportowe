@@ -4,6 +4,7 @@ from accounts.models import User
 from django.db import IntegrityError
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
+from django.core.mail import EmailMessage
 
 def signupuser(request):
     if request.method == "GET":
@@ -21,6 +22,8 @@ def signupuser(request):
                 except ValidationError as e:
                     return render(request, 'accounts/signupuser.html', {'form': SignUpForm(), 'passwordError': e, 'email': request.POST['email']})
                 else:
+                    msg = EmailMessage('Witaj na naszym forum', 'Mamy nadzieje, że forum bedzie pomocne.', 'Forum Sportowe<rafiks28@gmail.com>', [request.POST['email']])
+                    msg.send()
                     user.save()
                     return redirect('home')
         else:
