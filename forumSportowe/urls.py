@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #accounts
     path('auth/', include('accounts.urls')),
+    path('verification/', include('verify_email.urls')),
     #forum
     path('', views.home, name='home'),
 ]
