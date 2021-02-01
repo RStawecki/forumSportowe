@@ -1,1 +1,12 @@
 home page
+
+{% if user.is_authenticated %}
+<form action="{% url 'accounts:logoutuser' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Log out</button>
+</form>
+{% else %}
+    <a href="{% url 'accounts:signupuser' %}">Sign up</a>
+    <a href="{% url 'accounts:loginuser' %}">Log in</a>
+{% endif %}
+    

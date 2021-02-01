@@ -22,6 +22,6 @@ class UserAdmin(DjangoUserAdmin):
             'fields': ('email', 'password1', 'password2'),
         }),
     )
-    list_display = ('email', 'is_staff') #'first_name', 'last_name'- pola wyswietale w panelu admina, z listy usuwamy ponieważ user nie ma tych pól
+    list_display = ('email', 'is_staff', 'is_active') #'first_name', 'last_name'- pola wyswietale w panelu admina, z listy usuwamy ponieważ user nie ma tych pól
     search_fields = ('email', 'first_name', 'last_name')
     ordering = ('email',)
