@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="row">  
+    {% for question in questions %}
+    <div class="question-col">
+        <div class="question-box">
+            <div class="display-date-user">
+                <p>{{ question.display_date }}</p>
+                <p>{{ question.user }}</p>
+            </div>
+            <h1 class="title">{{ question.title }}</h1>
+            <h2 class="description">{{ question.desc|truncatechars:70 }}</h2>
+            <div class="btn-cls">
+                <div class="total-likes-btnLikes">
+                    <p>{{question.total_likes}}</p>
+
+                    <form action="{% url 'like' question.id %}" method="POST">
+                        {% if question.is_liked %}
+                            <button id="btnLikes" type="submit">Dislike</button>
+                        {% else %}
+                            <button id="btnLikes" type="submit">Like</button>
+                        {% endif %}
+                        
+                        {% csrf_token %}
+                    </form>
+                </div>
+                <div class="answer-view-answer">
+                    <a class="btn-answer" href="{% url 'create_answer' question.id %}">Answer</a>
+                    <a href="{% url 'detail' question.id %}">View Answers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</div> 
+    
+{% endblock content %}

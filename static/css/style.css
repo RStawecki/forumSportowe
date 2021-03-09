@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    font-family: 'Lato', sans-serif;
+    font-size: 10px;
+}
+.row{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.question-col{
+    margin: 2rem 0;
+    width: 100%;
+}
+.question-box{
+    background-color: #ddf;
+    width: 55%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+.display-date-user{
+    display: flex;
+    justify-content: space-between;
+}
+.btn-cls{
+    display: flex;
+    justify-content: space-between;
+}
+.total-likes-btnLikes{
+    display: flex;
+}
+.btn-answer{
+    border-radius: 15px;
+    background-color: #55f;
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 300;
+    padding: 1rem;
+}

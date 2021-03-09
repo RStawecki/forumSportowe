@@ -57,7 +57,7 @@ ROOT_URLCONF = 'forumSportowe.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'baseTemplate'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,3 +130,9 @@ SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 
 DEFAULT_FROM_EMAIL = 'Forum Sportowe<rafiks28@gmail.com>'
 
+MEDIA_ROOT = BASE_DIR / 'media' 
+MEDIA_URL = '/media/'
+
+LOGIN_URL = 'accounts:loginuser'
+
+STATICFILES_DIRS = [BASE_DIR / 'static']

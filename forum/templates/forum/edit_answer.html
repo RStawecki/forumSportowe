@@ -1,0 +1,7 @@
+{{error}}
+
+<form action="{% url 'edit_answer' answer.id %}" method='POST' enctype="multipart/form-data"  >
+    {{form}}
+    {% csrf_token %}
+    <button type="submit">Edit Answer</button>
+</form>

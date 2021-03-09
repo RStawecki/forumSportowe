@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    
+{% for question in questions %}
+
+{% if question.user == user %}
+<a href="{% url 'myDetail' question.id %}">{{ question.title }}</a>
+
+{% else %}
+{{ question.title }}
+{% endif %}
+{% endfor %}
+        
+    
+{% endblock content %}
