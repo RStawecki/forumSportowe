@@ -1,3 +1,7 @@
+import django_heroku
+import dj_database_url
+from decouple import config
+
 """
 Django settings for forumSportowe project.
 
@@ -23,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'n#0w%9w%57jb#1z2(+yoswp0=m8$md4-k=w^^yyofw@2_)6h28'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -50,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'forumSportowe.urls'
@@ -121,6 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 AUTH_USER_MODEL = 'accounts.User' # zamieniamy domyślny model usera w django na nasz customowy
 
@@ -136,3 +142,5 @@ MEDIA_URL = '/media/'
 LOGIN_URL = 'accounts:loginuser'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+django_heroku.settings(locals())
