@@ -1,13 +1,49 @@
+{% extends 'base.html' %}
 
-
+{% block content %}
 {% if questions  %}
-    {% for question in questions  %}
-        {{ question }}
-    {% endfor %}
-{% else %}
-   <h4>There are not any questions.</h4>
-{% endif %}
-    
+<div class="row">  
+    {% for question in questions %}
+    <div class="question-col">
+        <a href="{% url 'detail' question.id %}"><div class="question-box">
+            <div class="display-date-user">
+                <p>{{ question.display_date }}</p>
+                <p>{{ question.user }}</p>
+            </div>
+            <h1 class="title">{{ question.title }}</h1>
+            <h2 class="description">{{ question.desc|truncatechars:70 }}</h2>
+            <div class="btn-cls">
+                <div class="total-likes-btnLikes">
+                    <p >{{question.total_likes}}</p>
 
+                    <form action="{% url 'like' question.id %}" method="POST">
+                        {% if question.is_liked %}
+                            <button class="margin-left" type="submit">Dislike</button>
+                        {% else %}
+                            <button class="margin-left" type="submit">Like</button>
+                        {% endif %}
+                        
+                        {% csrf_token %}
+                    </form>
+                </div>
+                <div class="total-likes-btnLikes">
+                    <a class="btn" href="{% url 'create_answer' question.id %}">Answer</a>
+                    <a class="btn margin-left" href="{% url 'detail' question.id %}">View Answers</a>
+                </div>
+            </div>
+        </div>
+        </a>
+    </div>
+
+    {% endfor %}
+
+
+</div> 
+{% else %}
+   <h4 class="empty-question">There are not any questions.</h4>
+{% endif %}
+
+    
+{% endblock content %}
 
     

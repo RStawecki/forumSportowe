@@ -1,28 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="section-form">
+    <h4 class="empty-question form-title">Ask your question</h4>
 
-{{ error }}
-<form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
-    <label for="id_title">Title:</label>
-    <input type="text" name="title" maxlength="250" required="" id="id_title">
-    <br>
-    <label for="id_desc">Desc:</label>
-    <textarea name="desc" cols="40" rows="10" required="" id="id_desc"></textarea>
-    <br>
-    <label for="id_image">Image:</label>
-    <input type="file" name="image" accept="image/*" id="id_image">
-    <br>
-    <label for="id_category">Category:</label>
-    <select name="category" required="" id="id_category">
-    
-    <option value="" selected="" disabled>Choose category</option>
-    <option value="ft">Football</option>
-    <option value="bs">Basketball</option>
-    <option value="sj">Ski Jumping</option>
-    <option value="hb">Handball</option>
-    <option value="bx">Boxing</option>
-    <option value="vb">Volleyball</option>
+    <div class="row">
+    <form class="form-container" action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
+        <label for="id_title">Title</label>
+        <input type="text" name="title" maxlength="250" required="" id="id_title">
+        
+        <label for="id_desc">Description</label>
+        <textarea name="desc" cols="40" rows="10" required="" id="id_desc"></textarea>
+        
+        <label for="id_image">Image</label>
+        <input type="file" name="image" accept="image/*" id="id_image">
+        
+        <label for="id_category">Category</label>
+        <select name="category" required="" id="id_category">
+        
+        <option value="" selected="" disabled>Choose category</option>
+        <option value="ft">Football</option>
+        <option value="bs">Basketball</option>
+        <option value="sj">Ski Jumping</option>
+        <option value="hb">Handball</option>
+        <option value="bx">Boxing</option>
+        <option value="vb">Volleyball</option>
 
-    </select>
-    {% csrf_token %}
-    <br>
-    <button type="submit">Create</button>
-</form>
+        </select>
+        {% csrf_token %}
+        <br>
+        <button type="submit">Create</button>
+    </form>
+    </div>
+</section>
+{% endblock %}

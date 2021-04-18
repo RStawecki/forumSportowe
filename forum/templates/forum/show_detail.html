@@ -1,17 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<section>
+    <div class="row">
+        {% for question in questions %}
+        <div class="question-col">
+            <div class="question-box">
+                <div class="display-date-user">
+                    <p>{{ question.display_date }}</p>
+                    <p>{{ question.user }}</p>
+                </div>
+                    <h1 class="title">{{ question.title }}</h1>
+                    <h2 class="description">{{ question.desc|truncatechars:70 }}</h2>
+                    <div class="btn-cls">
+                        <div class="total-likes-btnLikes">
+                            
+                            
+                        </div>
+                        <div class="total-likes-btnLikes">
+                            
+                            <a class="btn margin-left" href="{% url 'myDetail' question.id %}">Edit question</a>
+                            
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
 
-    
-{% for question in questions %}
-
-{% if question.user == user %}
-<a href="{% url 'myDetail' question.id %}">{{ question.title }}</a>
-
-{% else %}
-{{ question.title }}
-{% endif %}
-{% endfor %}
-        
-    
+    </div>        
+</section>  
 {% endblock content %}

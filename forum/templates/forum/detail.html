@@ -1,7 +1,116 @@
-{{question.title}}
+{% extends 'base.html' %}
 
 
-{% for answer in answers  %}
-    {{ answer }}
-{% endfor %}
+{% block content %}
+<section class="detail">
+    <div class="row">
+<div class="question-col">
+    <div class="question-box">
+        <div class="display-date-user">
+            <p>{{ question.display_date }}</p>
+            <p>{{ question.user }}</p>
+        </div>
+        <h1 class="title">{{ question.title }}</h1>
+        <h2 class="description">{{ question.desc }}</h2>
+        {% if question.image  %}
+            <div class="image">
+                <img src="{{question.image.url}}" alt="">
+            </div>
+        {% endif %}
+        <div class="btn-cls">
+            <div class="total-likes-btnLikes">
+                <p >{{question.total_likes}}</p>
+
+                <!-- <form action="{% url 'like' question.id %}" method="POST">
+                    {% if question.is_liked %}
+                        <button class="margin-left" type="submit">Dislike</button>
+                    {% else %}
+                        <button class="margin-left" type="submit">Like</button>
+                    {% endif %}
+                    
+                    {% csrf_token %}
+                </form> -->
+                 <form id="question-like">
+                    <input type="text" id="id" style="display:none;" value="{{question.id}}">
+                    {% if question.is_liked %}
+                        <button class="margin-left" type="submit">Dislike</button>
+                    {% else %}
+                        <button class="margin-left" type="submit">Like</button>
+                    {% endif %}
+                   
+                    
+                    {% csrf_token %}
+                </form>
+            </div>
+            <div class="total-likes-btnLikes">
+                <a class="btn" href="{% url 'create_answer' question.id %}">Answer</a>
+                
+            </div>
+        </div>
+    </div>
+    </a>
+</div>
+
+{% if answers %}
+   <h3 class="cls-h3">Numbers of answers: {{answers.count}}</h3> 
+{% else %}
+    <h3>There are no answers.</h3>
+{% endif %}
     
+{% for answer in answers %}
+    
+
+    
+<div class="question-col">
+    <div class="question-box">
+        <div class="display-date-user">
+            <p>{{ answer.display_date }}</p>
+            <p>{{ answer.user }}</p>
+        </div>
+        
+        <h2 class="description">{{ answer.desc }}</h2>
+        {% if answer.image  %}
+            <div class="image">
+                <img src="{{answer.image.url}}" alt="">
+            </div>
+        {% endif %}
+        <div class="btn-cls">
+            <div class="total-likes-btnLikes">
+                
+                <p >{{answer.total_likes}}</p>
+
+                <form action="{% url 'answerLike' answer.id %}" method="POST">
+                    {% if answer.is_liked %}
+                        <button class="margin-left" type="submit">Dislike</button>
+                    {% else %}
+                        <button class="margin-left" type="submit">Like</button>
+                    {% endif %}
+                    
+                    
+                    {% csrf_token %}
+                </form>
+
+                <!-- <form>
+                    <input type="text" id="id" value="{{question.id}}">
+                    {% if answer.is_liked %}
+                        <button class="margin-left" type="submit">Dislike</button>
+                    {% else %}
+                        <button class="margin-left" type="submit">Like</button>
+                    {% endif %}
+                    <p >{{answer.total_likes}}</p>
+                    
+                    {% csrf_token %}
+                </form> -->
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
+
+{% endfor %}
+</div>
+</section>
+    
+
+{% endblock %}

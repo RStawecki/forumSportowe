@@ -32,12 +32,15 @@ urlpatterns = [
     path('show_detail' , views.show_detail, name='show_detail'),
     path('show_detail/<int:questionId>', views.myDetail, name='myDetail'),
     path('show_detail/<int:questionId>/delete', views.delete, name='delete'),
-    path('latest/<int:questionId>/detail', views.detail, name='detail'),
+    path('latest/<int:questionId>', views.detail, name='detail'),
     path('sport/<str:sportKey>', views.displaySport, name='displaySport'),
     path('search/', views.search, name='search'),
     path('create_answer/<int:questionId>', views.createAnswer, name="create_answer"),
     path('edit_answer/<int:answerId>', views.edit_answer, name='edit_answer'),
-    path('latest/<int:questionId>', views.like, name='like'),
+    path('latest/<int:questionId>/like', views.like, name='like'),
+    path('detail/<int:answerId>/like', views.answerLike, name='answerLike'),
+    path('likeAjax', views.likeAjax, name='likeAjax')
+
 
     
 ]

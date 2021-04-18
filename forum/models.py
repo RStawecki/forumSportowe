@@ -46,9 +46,22 @@ class Answer(Model):
     user = ForeignKey(User, on_delete=CASCADE)
     question = ForeignKey(Question, on_delete=CASCADE, related_name='answers')
     image = ImageField(blank=True, upload_to='images/')
+    likes = ManyToManyField(User, related_name='answerLikes', blank=True)
 
+    def display_date(self):
+        tz = timezone.utc
+        actualDate = datetime.now(tz)
+        diffDate = (actualDate - self.createDate).total_seconds()
+        if(diffDate >= 86400):
+            return str(round(diffDate/60/60/24)) + " d. ago"
+        elif(diffDate > 3600 and diffDate < 86400):
+            return str(round(diffDate/60/60)) + " h. ago"
+        else:
+            return str(round(diffDate/60)) + " min. ago"
+            
     def __str__(self):
         return self.desc[:15]
 
-    
+    def total_likes(self):
+        return self.likes.count()
 

@@ -1,21 +1,29 @@
-<form action="{% url 'myDetail' question.id %}" method="POST" enctype="multipart/form-data">
+{% extends 'base.html' %}
+{% block content %}
+<section class="section-form">
+    <h4 class="empty-question form-title">Edit question</h4>
+    <div class="row">
+    <form class="form-container" action="{% url 'myDetail' question.id %}" method="POST" enctype="multipart/form-data">
 
-    <label for="id_title">Title:</label>
+    <label for="id_title">Title</label>
     <input type="text" name="title" value="{{question.title}}" maxlength="250" required="" id="id_title">
 
-    <label for="id_desc">Desc:</label>
+    <label for="id_desc">Description</label>
     <textarea name="desc" cols="40" rows="10" required="" id="id_desc">{{question.desc}}</textarea>
     {% if question.image %}
-        <label for="id_image">Image:</label>
-        Currently: <a href="{{question.image.url}}">{{question.image.url}}</a>
-        <input type="checkbox" name="image-clear" id="image-clear_id">
+        <label class="text-bold" for="id_image">Image</label>
+        <label>Currently</label>
+         <a class="margin-bottom" href="{{question.image.url}}">{{question.image.url}}</a>
+        
 
     <label for="image-clear_id">Clear</label><br>
+    <input class="checkbox margin-bottom" type="checkbox" name="image-clear" id="image-clear_id">
     {% endif %}
-    Change:
+    
+    <label>Change</label>
     <input type="file" name="image" accept="image/*" id="id_image">
 
-    <label for="id_category">Category:</label>
+    <label for="id_category">Category</label>
     <select name="category" required="" id="id_category">
 
         {% for short, name in question.categories %}
@@ -34,12 +42,22 @@
     </select>
 
     {% csrf_token %}
-    <button type="submit">Save</button>
-    
+        <div class="btn-edit">
+            <div class="btn-sub">
+                <button  type="submit">Save</button>
+            </div>
+            <div class="btn-sub">
+                <button  type="submit">Delete</button>
+            </div>
+        </div>
+    </div>
 </form>
 
 <form action="{% url 'delete' question.id %}" method="POST">
 
     {% csrf_token %}
-    <button type="submit">Delete</button>
+    
 </form>
+</div>
+</section>
+{% endblock %}

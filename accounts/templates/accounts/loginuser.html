@@ -1,12 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
 
-{{ wrongEmail }}
-{{ notActive }}
-{{ passwordError }}
-<form action="{% url 'accounts:loginuser' %}" method="POST">
-    <label for="id_username">Email</label>
-    <input type="email" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="254" required="" id="id_username">
-    <label for="id_password">Password:</label>
-    <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
-    {% csrf_token %}
-    <button type="submit">Log In</button>
-</form>
+
+<section class="section-form">
+    <h1 class="empty-question form-title">Log in</h1>
+    <div class="row">
+        
+        {% if wrongEmail %}
+            <p class = "error">{{ wrongEmail }}</p> 
+        {% endif %}
+            
+       
+       {% if notActive %}
+        <p class = "error">{{ notActive }}</p> 
+       {% endif %}
+           
+        
+        {% if passwordError  %}
+            <p class = "error">{{ passwordError }}</p>
+        {% endif %}
+            
+        
+        <form class="form-container" action="{% url 'accounts:loginuser' %}" method="POST">
+            <label for="id_username">Email</label>
+            <input type="email" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="254" required="" id="id_username">
+            <label for="id_password">Password:</label>
+            <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+            {% csrf_token %}
+            <button type="submit">Log In</button>
+        </form>
+    </div>
+</section>
+{% endblock %}

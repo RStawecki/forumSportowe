@@ -1,11 +1,25 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 html, body{
     font-family: 'Lato', sans-serif;
     font-size: 10px;
+}
+input,
+textarea,
+select{
+    outline: none;
+}
+section{
+    margin-bottom: 3rem;
+}
+a,
+a:hover{
+    text-decoration: none;
+    color: black;
 }
 .row{
     max-width: 1200px;
@@ -17,27 +31,257 @@ html, body{
 }
 .question-box{
     background-color: #ddf;
-    width: 55%;
+    width: 100%;
     margin: 0 auto;
     padding: 1rem;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px -4px 15px 5px #ccf;
+            box-shadow: 2px -4px 15px 5px #ccf;
 }
 .display-date-user{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    font-size: 1.5rem;
 }
 .btn-cls{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
 }
 .total-likes-btnLikes{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
-.btn-answer{
-    border-radius: 15px;
+.btn:link,
+.btn:visited,
+button[type='submit']{
+    /* border-radius: 15px;
     background-color: #55f;
-    text-decoration: none;
     color: white;
     font-size: 1.5rem;
     font-weight: 300;
+    padding: 0.8rem;
+    border: none;
+    height: 100%;
+    border: 2px solid #55f;
+    transition: all 0.5s; */
+    font-size: 1.5rem;
+    background-color: #55f;
+    padding: 0.8rem;
+    border-radius: 20px;
+    color: white;
+    font-weight: 300;
+    border: none;
+    height: 100%;
+    border: 2px solid #55f;
+}
+.btn:hover,
+.btn:active,
+button[type='submit']:hover{
+    background-color: transparent;
+    color:black;
+    
+}
+
+.total-likes-btnLikes p{
+    /* border: 2px solid #aaf;
+    background-color: #bbf;
+    font-size: 1.2rem;
     padding: 1rem;
+    border-radius: 8px;
+    height: 100%; */
+    background-color: #bbf;
+    border: 2px solid #aaf;
+    padding: 0.6rem 1rem;
+    border-radius: 7px;
+    height: 100%;
+
+}
+.margin-left{
+    margin-left: 1rem;
+}
+.title{
+    margin: 1rem 0;
+}
+.description{
+    margin-bottom: 1rem;
+}
+.empty-question{
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 400;
+}
+.image{
+    width: 50%;
+    margin:0 auto;
+}
+.image img {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+.nav-link{
+    font-size: 1.5rem;
+}
+.form button[type='submit'] {
+    height: auto;
+}
+.detail .row {
+    max-width: 600px;
+}
+.cls-h3{
+    font-size: 2.8rem;
+    font-weight: 300;
+}
+
+/*--------------*/
+/*---FORM--------*/
+/*--------------*/
+.form-title{
+    font-size: 3.3rem;
+    font-weight: 300;
+
+}
+.form-container{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+}
+label{
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+.form-container input[type='text'],
+.form-container input[type='email'],
+.form-container input[type='password'],
+.form-container textarea,
+.form-container select{
+    border: none;
+    -webkit-box-shadow: 0 0 20px 3px #ddd;
+            box-shadow: 0 0 20px 3px #ddd;
+    margin-bottom: 2.2rem;
+    font-size: 1.7rem;
+    font-weight: 300;
+    padding: 0.5rem;
+
+
+
+}
+.form-container input[type='text'],
+.form-container input[type='email'],
+.form-container input[type='password'],
+.form-container select {
+    height: 3rem;
+}
+input[type="file"]{
+    margin-bottom: 2.2rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+    height: 3rem;
+}
+.form-container select{
+    font-size: 1.6rem;
+}
+.section-form .row{
+    max-width: 850px;
+}
+.section-form button[type="submit"]{
+    height: auto;
+}
+.text-bold{
+    font-weight: 400;
+}
+.margin-bottom{
+    margin-bottom: 2.2rem;
+}
+.checkbox{
+    margin-top:-10px;
+
+}
+.btn-edit{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+}
+.btn-sub{
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+}
+.btn-sub button[type="submit"]{
+    width: 100%;
+}
+.btn-sub:first-child {
+    margin-right: 0.7rem;
+}
+.btn-sub:last-child {
+    margin-left: 0.7rem;
+}
+#id_password2 {
+    margin-bottom: 1rem;
+}
+.form-container li {
+    font-size: 1.35rem;
+}
+.error {
+    background-color: #fdd;
+    font-size: 1.7rem;
+    font-weight: 300;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 1rem;
+    
+}
+header{
+    background-image: -webkit-gradient(linear,left top, left bottom,from(rgba(0, 0, 0, 0.432)),to(rgba(0, 0, 0, 0.432))),url('img/headerBG.jpg');
+    background-image: -o-linear-gradient(rgba(0, 0, 0, 0.432),rgba(0, 0, 0, 0.432)),url('img/headerBG.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.432),rgba(0, 0, 0, 0.432)),url('img/headerBG-min.jpg');
+    height: 93.1vh;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size: 6rem;
+    font-weight: 100;
+    
+}
+.margin-header {
+    margin-top: 40vh;
+}
+header .btn:link, 
+header .btn:visited,
+header .btn:hover{
+    height: auto;
+    font-size: 2.2rem;
+    border-radius: 30px;
+    color: white;
+
+}
+.header-btns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.header-btns a:last-child {
+    border: 2px solid #55f;
+    background-color: transparent;
+}
+.header-btns a:last-child:hover {
+    background-color:#55f;
 }

@@ -1,7 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="section-form">
+    <h4 class="empty-question form-title">Add your answer</h4>
+<div class="row">
 {{error}}
-<form action="{% url 'create_answer' question.id %}" method='POST' enctype="multipart/form-data"  >
-    {{form}}
-    {% csrf_token %}
+<form class="form-container" action="{% url 'create_answer' question.id %}" method='POST' enctype="multipart/form-data"  >
+    
+    <label for="id_desc">Description</label>
+    <textarea name="desc" cols="40" rows="10" required="" id="id_desc"></textarea>
+
+    <label for="id_image">Image</label>
+    <input type="file" name="image" accept="image/*" id="id_image">
+    
+  
     <button type="submit">Answer</button>
+    {% csrf_token %}
 </form>
+</div>
+</section>
+{% endblock %}
+
+
+    
+
+    
+
 

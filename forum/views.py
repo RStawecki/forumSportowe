@@ -61,7 +61,16 @@ def delete(request, questionId):
 
 def detail(request, questionId):
     question = get_object_or_404(Question, pk=questionId)
+    if question.likes.filter(id = request.user.id).exists():
+        question.is_liked = True
+    else:
+        question.is_liked = False
     answers = question.answers.all()
+    for answer in answers:
+        if answer.likes.filter(id = request.user.id).exists():
+            answer.is_liked = True
+        else:
+            answer.is_liked = False
     return render(request,'forum/detail.html', {'question': question, 'answers': answers})
 
 def displaySport(request, sportKey):
@@ -120,3 +129,21 @@ def like(request, questionId):
     else:
         question.likes.add(request.user)
     return redirect('latest')
+
+def answerLike(request, answerId):
+    answer = get_object_or_404(Answer, pk=answerId)
+    if answer.likes.filter(id = request.user.id).exists():
+        answer.likes.remove(request.user)
+    else:
+        answer.likes.add(request.user)
+    return redirect('latest')
+
+def likeAjax(request):
+    questionId = request.POST['questionID']
+    question = get_object_or_404(Question, pk=questionId)
+    if question.likes.filter(id=request.user.id).exists():
+        question.likes.remove(request.user)
+    else:
+        question.likes.add(request.user)
+    return redirect('latest')
+

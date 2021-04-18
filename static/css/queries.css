@@ -1,0 +1,73 @@
+/*------------------*/
+/*--laptops, notebooks, iPad PRO---*/
+/*-------------------*/
+@media only screen and (max-width: 1200px) {
+    .row {
+        padding: 0 1rem;
+    }
+} 
+/*------------------*/
+/*--iPad---*/
+/*-------------------*/
+@media only screen and (max-width: 1023px) {
+    label {
+        margin-bottom: 0.8rem;
+    }
+    .form-container input[type='text'], 
+    .form-container input[type='email'], 
+    .form-container input[type='password'], 
+    .form-container textarea, 
+    .form-container select,
+    input[type="file"],
+    .margin-bottom {
+        margin-bottom: 1.8rem;
+    }
+    .detail .row {
+        max-width: 720px;
+    }
+    
+    header {
+        font-size: 5rem;
+    }
+}
+/*------------------*/
+/*--nav adjustment---*/
+/*-------------------*/
+@media only screen and (max-width: 991px) {
+    nav .margin-left {
+        margin-left: 0;
+        margin-top: 0.8rem;
+    }
+    header{
+        height: 94.5vh;
+    }
+}
+/*------------------*/
+/*--iPhone 6/7/8---*/
+/*-------------------*/
+@media only screen and (max-width: 767px) {
+    html, body {
+        font-size: 8px;
+    }
+    header {
+        font-size: 4rem;
+    }
+    .form-container input[type='text'], 
+    .form-container input[type='email'], 
+    .form-container input[type='password'], 
+    .form-container textarea, .form-container select, 
+    input[type="file"], .margin-bottom {
+        margin-bottom: 1rem;
+    }
+    label {
+        margin-bottom: 0.4rem;
+    }
+}
+/*------------------*/
+/*--small phone---*/
+/*-------------------*/
+@media only screen and (max-width: 374px) {
+    html, body {
+        font-size: 7px;
+    }
+}

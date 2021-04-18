@@ -1,13 +1,15 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
+<header>
+  <div class="row">
+    <p class="margin-header">
+      All sport questions in one place.<br />
+      Connect with passionate people.
+    </p>
+    <div class="header-btns">
+      <a class="btn" href="{% url 'accounts:signupuser' %}">Register</a>
+      <a class="btn margin-left" href="{% url 'latest' %}">Latest</a>
+    </div>
+  </div>
+</header>
 
-{% block content %}
-
-    home page
-
-    
-       
-        
-    
 {% endblock content %}
-    
-    

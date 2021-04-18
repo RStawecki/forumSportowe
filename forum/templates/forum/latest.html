@@ -2,7 +2,7 @@
 
 
 {% block content %}
-
+<section>
 <div class="row">  
     {% for question in questions %}
     <div class="question-col">
@@ -15,28 +15,31 @@
             <h2 class="description">{{ question.desc|truncatechars:70 }}</h2>
             <div class="btn-cls">
                 <div class="total-likes-btnLikes">
-                    <p>{{question.total_likes}}</p>
+                    <p >{{question.total_likes}}</p>
 
                     <form action="{% url 'like' question.id %}" method="POST">
                         {% if question.is_liked %}
-                            <button id="btnLikes" type="submit">Dislike</button>
+                            <button class="margin-left" type="submit">Dislike</button>
                         {% else %}
-                            <button id="btnLikes" type="submit">Like</button>
+                            <button class="margin-left" type="submit">Like</button>
                         {% endif %}
                         
                         {% csrf_token %}
                     </form>
                 </div>
-                <div class="answer-view-answer">
-                    <a class="btn-answer" href="{% url 'create_answer' question.id %}">Answer</a>
-                    <a href="{% url 'detail' question.id %}">View Answers</a>
+                <div class="total-likes-btnLikes">
+                    <a class="btn" href="{% url 'create_answer' question.id %}">Answer</a>
+                    <a class="btn margin-left" href="{% url 'detail' question.id %}">View Answers</a>
+                    
                 </div>
             </div>
         </div>
+        
     </div>
 
     {% endfor %}
 
 </div> 
+</section>
     
 {% endblock content %}
